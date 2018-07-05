@@ -180,7 +180,7 @@
     <script type="text/javascript">
 
     $(document).ready(function() {
-        $("#submitBtn").on("click", function() {
+        $("#submit").on("click", function() {
             // form validation
             function validateForm() {
                 var isValid = true;
@@ -218,7 +218,8 @@
                 // grabs current website URL
                 var currentURL = window.location.origin;
                 // AJAX posts data to friends API
-                $.post(currentURL + "/api/friends", newFriend, function(data) {
+                $.post("/api/friends", newFriend, function(data) {
+                    console.log("This is the data that came back", data)
                     // Grab the result from the AJAX post so that the best match's name and photo are displayed.
                     $("#matchName").text(data.name);
                     $("#matchPic").attr("src", data.profilePic);

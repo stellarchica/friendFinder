@@ -1,14 +1,16 @@
 // handles incoming survey results / compatibility logic
 // load datas
-var friendList = require("../data/friend.js");
+var friendList = require("../data/friends.js");
 
 module.exports = function(app){
   // GET route, displays JSON of all possible friends
   app.get("/api/friends", function(req,res){
+      console.log("we hit /api/friends route");
     res.json(friendList);
   });
 
   app.post("/api/friends", function(req,res){
+      console.log("hit the post route")
     // grabs new friend's scores to compare with friends in array
     var newFriendScores = req.body.scores;
     var scoresArray = [];
@@ -37,9 +39,8 @@ module.exports = function(app){
 
     //return bestMatch data
     var bff = friendList[bestMatch];
-    res.json(bff);
-
-    //pushes new submission into the friendsList array
+    console.log("this is our bff", bff)
     friendList.push(req.body);
+    res.json(bff);
   });
 };
