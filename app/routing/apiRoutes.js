@@ -19,15 +19,15 @@ module.exports = function(app){
 
     // runs through current friends in list
     for(var i=0; i<friendList.length; i++){
-      var scoresDiff = 0;
+      var totalDifference = 0;
       // runs through scores, compares friends
       for(var j=0; j<newFriendScores.length; j++){
           // right math?
-        scoresDiff += (Math.abs(parseInt(friendList[i].scores[j]) - parseInt(newFriendScores[j])));
+          totalDifference += (Math.abs(parseInt(friendList[i].scores[j]) - parseInt(newFriendScores[j])));
       }
 
       // push results into scoresArray
-      scoresArray.push(scoresDiff);
+      scoresArray.push(totalDifference);
     }
 
     // after all friends are compared, finds best match
